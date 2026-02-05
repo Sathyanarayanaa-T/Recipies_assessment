@@ -2,7 +2,7 @@
 
 A full-stack web application for browsing and searching 8,451+ recipes with advanced filtering, pagination, and detailed recipe information.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 18** - UI framework
@@ -21,7 +21,7 @@ A full-stack web application for browsing and searching 8,451+ recipes with adva
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 recipes_test/
@@ -52,7 +52,7 @@ recipes_test/
 
 ---
 
-## 🔧 Setup & Installation
+## Setup and Installation
 
 ### Prerequisites
 - **Node.js 18+**
@@ -106,7 +106,7 @@ npm install
 
 ---
 
-## 🏃 Running the Application
+## Running the Application
 
 ### Start Backend API
 ```bash
@@ -127,7 +127,7 @@ Open your browser and navigate to: **http://localhost:5174**
 
 ---
 
-## 🗃️ Database Setup
+## Database Setup
 
 The SQLite database (`recipes.db`) is already populated with 8,451 recipes. If you need to reimport data:
 
@@ -136,7 +136,7 @@ The SQLite database (`recipes.db`) is already populated with 8,451 recipes. If y
 python3 import_recipes.py
 ```
 
-**What it does:**
+**What the import script does:**
 - Reads `US_recipes_null.json`
 - Cleans and validates data
 - Handles null values
@@ -145,7 +145,7 @@ python3 import_recipes.py
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### GET `/api/recipes`
 Get paginated recipes sorted by rating.
@@ -188,7 +188,7 @@ curl "http://localhost:8001/api/recipes/search?title=pie&cuisine=Italian&rating=
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Run API Tests
 ```bash
@@ -197,11 +197,11 @@ PYTHONPATH=$(pwd) ./venv/bin/pytest tests/ -v
 ```
 
 **Test Coverage:**
-- ✅ 26 automated tests
-- ✅ All endpoints tested
-- ✅ Edge cases covered
-- ✅ Null value handling
-- ✅ CORS validation
+- 26 automated tests
+- All endpoints tested
+- Edge cases covered
+- Null value handling
+- CORS validation
 
 **Test Results:**
 ```
@@ -212,9 +212,9 @@ See [`backend/tests/README.md`](backend/tests/README.md) for detailed test docum
 
 ---
 
-## ✨ Features
+## Features
 
-### 🔍 Search & Filter
+### Search and Filter
 - **Recipe Name** - Search by title (case-insensitive)
 - **Cuisine Type** - Filter by cuisine
 - **Rating** - Minimum star rating
@@ -222,20 +222,20 @@ See [`backend/tests/README.md`](backend/tests/README.md) for detailed test docum
 - **Calories** - Maximum calorie count
 - **Combined Filters** - Use multiple filters together
 
-### 📄 Pagination
+### Pagination
 - Customizable results per page (15-100)
 - Navigate through 564 pages
 - Shows total recipe count
 - Smooth page transitions
 
-### 📊 Recipe Details
+### Recipe Details
 - Click any recipe to view full details
 - Nutrition information
 - Prep, cook, and total time
 - Serving size
 - Recipe description
 
-### 🎨 UI/UX
+### User Interface
 - Responsive design (mobile, tablet, desktop)
 - Loading states
 - Error handling
@@ -245,7 +245,7 @@ See [`backend/tests/README.md`](backend/tests/README.md) for detailed test docum
 
 ---
 
-## 🏗️ How It Works
+## How It Works
 
 ### Data Flow
 
@@ -299,7 +299,7 @@ export const fetchRecipes = async (filters, page, limit) => {
 
 ---
 
-## 🔑 Key Technologies Explained
+## Technology Choices
 
 ### Why Vite?
 - **Fast HMR** - Instant hot module replacement
@@ -323,9 +323,9 @@ export const fetchRecipes = async (filters, page, limit) => {
 
 ---
 
-## 📦 Package Versions
+## Package Versions
 
-### Frontend (`package.json`)
+### Frontend (package.json)
 ```json
 {
   "dependencies": {
@@ -342,7 +342,7 @@ export const fetchRecipes = async (filters, page, limit) => {
 }
 ```
 
-### Backend (`requirements.txt`)
+### Backend (requirements.txt)
 ```
 Flask==3.1.0
 Flask-CORS==5.0.0
@@ -351,7 +351,7 @@ pytest==8.3.4
 
 ---
 
-## 🐛 Common Issues & Solutions
+## Common Issues and Solutions
 
 ### Issue: Port 8001 already in use
 **Solution:**
@@ -374,7 +374,7 @@ cd ..
 python3 import_recipes.py
 ```
 
-### Issue: Frontend can't connect to API
+### Issue: Frontend cannot connect to API
 **Solution:**
 1. Check backend is running on port 8001
 2. Verify `PYTHONPATH` is set correctly
@@ -393,16 +393,16 @@ npm install
 
 ---
 
-## 📈 Performance
+## Performance
 
 - **Database:** Indexed on `rating`, `cuisine`, `total_time`
 - **Frontend:** Lazy loading, debounced search (500ms)
 - **API:** Pagination limits max 100 results per page
-- **Load Time:** <1 second for typical queries
+- **Load Time:** Less than 1 second for typical queries
 
 ---
 
-## 🎯 Development Tips
+## Development Tips
 
 ### Frontend Development
 ```bash
@@ -439,13 +439,13 @@ PYTHONPATH=$(pwd) ./venv/bin/pytest tests/test_api_endpoints.py::TestGetRecipesE
 
 ---
 
-## 📝 License
+## License
 
 This project was created as an assessment project.
 
 ---
 
-## 👤 Author
+## Author
 
 **Sathyanarayana T**
 - GitHub: [@Sathyanarayanaa-T](https://github.com/Sathyanarayanaa-T)
@@ -453,11 +453,11 @@ This project was created as an assessment project.
 
 ---
 
-## 📚 Additional Documentation
+## Additional Documentation
 
 - [API Tests Documentation](backend/tests/README.md) - Detailed test suite guide
 - [Data Import Script](import_recipes.py) - Database setup documentation
 
 ---
 
-**Built with ❤️ using React, Flask, and Tailwind CSS**
+**Built using React, Flask, and Tailwind CSS**
