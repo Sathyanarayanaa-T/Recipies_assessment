@@ -20,8 +20,20 @@ const RecipesPage = () => {
         const loadRecipes = async () => {
             setIsLoading(true);
             setError(null);
+
+            const startTime = Date.now();
+
             try {
                 const data = await fetchRecipes(filters, currentPage, limit);
+
+                // Ensure minimum loading time for smooth animations (300ms)
+                const elapsedTime = Date.now() - startTime;
+                const minLoadingTime = 300;
+
+                if (elapsedTime < minLoadingTime) {
+                    await new Promise(resolve => setTimeout(resolve, minLoadingTime - elapsedTime));
+                }
+
                 setRecipeData(data);
             } catch (err) {
                 console.error('Failed to load recipes:', err);

@@ -1,17 +1,21 @@
 import React from 'react';
 import StarRating from './StarRating';
 
-const RecipeRow = ({ recipe, onClick }) => {
+const RecipeRow = ({ recipe, onClick, index = 0 }) => {
     const truncateTitle = (title, maxLength = 50) => {
         // Handle null or undefined title
         if (!title) return 'Untitled Recipe';
         return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
     };
 
+    // Calculate stagger delay for smooth reveal (max 150ms)
+    const animationDelay = `${Math.min(index * 30, 150)}ms`;
+
     return (
         <tr
             onClick={() => onClick(recipe)}
-            className="border-b border-slate-200 hover:bg-primary-50 cursor-pointer transition-colors group"
+            className="border-b border-slate-200 hover:bg-primary-50 cursor-pointer transition-colors group animate-slideIn"
+            style={{ animationDelay }}
         >
             <td className="px-6 py-4">
                 <div className="flex items-center gap-2">

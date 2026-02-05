@@ -21,7 +21,7 @@ const RecipeTable = ({ recipes, onRecipeClick, isLoading }) => {
     }
 
     return (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden animate-fadeIn">
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <thead className="bg-gradient-to-r from-slate-50 to-slate-100 border-b border-slate-200">
@@ -44,11 +44,12 @@ const RecipeTable = ({ recipes, onRecipeClick, isLoading }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {recipes.map((recipe) => (
+                        {recipes.map((recipe, index) => (
                             <RecipeRow
                                 key={recipe.id}
                                 recipe={recipe}
                                 onClick={onRecipeClick}
+                                index={index}
                             />
                         ))}
                     </tbody>
