@@ -4,7 +4,7 @@ import RecipeDetailDrawer from '../components/RecipeDetailDrawer';
 import SearchFilters from '../components/SearchFilters';
 import PaginationControls from '../components/PaginationControls';
 import NoResults from '../components/NoResults';
-import { getPaginatedRecipes } from '../data/mockData';
+import { fetchRecipes } from '../services/api';
 
 const RecipesPage = () => {
     const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -14,15 +14,24 @@ const RecipesPage = () => {
     const [filters, setFilters] = useState({});
     const [recipeData, setRecipeData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Simulate API call with loading state
-        setIsLoading(true);
-        setTimeout(() => {
-            const data = getPaginatedRecipes(currentPage, limit, filters);
-            setRecipeData(data);
-            setIsLoading(false);
-        }, 300);
+        const loadRecipes = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                const data = await fetchRecipes(filters, currentPage, limit);
+                setRecipeData(data);
+            } catch (err) {
+                console.error('Failed to load recipes:', err);
+                setError('Failed to load recipes. Please make sure the API server is running.');
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadRecipes();
     }, [currentPage, limit, filters]);
 
     const handleRecipeClick = (recipe) => {
@@ -72,12 +81,19 @@ const RecipesPage = () => {
                     onClearFilters={handleClearFilters}
                 />
 
+                {/* Error Message */}
+                {error && (
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-red-800 text-sm">{error}</p>
+                    </div>
+                )}
+
                 {/* Recipe Table or No Results */}
                 {!isLoading && !hasRecipes && hasFilters && (
                     <NoResults type="search" />
                 )}
 
-                {!isLoading && !hasRecipes && !hasFilters && (
+                {!isLoading && !hasRecipes && !hasFilters && !error && (
                     <NoResults type="noData" />
                 )}
 
